@@ -1,8 +1,6 @@
-# Judul Proyek
+# WEBSITE KEPEGAWAIAN
 
-
-
-## Penulis
+## Anggota Kelompok 6
 
 * **Afdhal Fidi Ansori**
 * **Aulia Arief**
