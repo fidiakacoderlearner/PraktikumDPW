@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengajuan Surat Tugas</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>    
 </head>
 <body class ="read-page">
 
@@ -62,7 +63,7 @@
                         <td>Pengabdian</td>
                         <td>
                             <div class="action-buttons">
-                                <a href="pengajuan-surat-create.html"><button class="btn-edit" onclick="handleEdit(1)">Edit</button></a>
+                                <a href="pengajuan-surat-create.html"><button class="btn-edit" onclick=" return handleEdit(1)">Edit</button></a>
                                 <button class="btn-delete" onclick="handleDelete(1)">Hapus</button>
                             </div>
                         </td>
@@ -75,13 +76,15 @@
                         <td>Pengabdian</td>
                         <td>
                             <div class="action-buttons">
-                                <a href="pengajuan-surat-create.html"><button class="btn-edit" onclick="handleEdit(2)">Edit</button></a>
+                                <a href="pengajuan-surat-create.html"><button class="btn-edit" onclick=" return handleEdit(2)">Edit</button></a>
                                 <button class="btn-delete" onclick="handleDelete(2)">Hapus</button>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            
+        </div>
+    </div>
+     
 </body>
 </html>

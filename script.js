@@ -117,3 +117,50 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+//tyo punya hal
+function handleDelete(id) {
+    // Validasi konfirmasi pengguna
+    const yakin = confirm("Apakah Anda yakin ingin menghapus data nomor " + id + "?");
+
+    if (yakin) {
+        // Mencari baris (tr) tempat tombol tersebut berada
+        const tombol = event.target;
+        const baris = tombol.closest("tr"); 
+
+        if (baris) {
+            baris.remove();
+            alert("Data berhasil dihapus dari tampilan.");
+        }
+    }
+}
+
+function handleEdit(id) {
+    //Tampilkan konfirmasi kepada pengguna
+    const konfirmasi = confirm("Apakah Anda yakin ingin mengubah data pengajuan nomor " + id + "?");
+
+    //Jika pengguna menekan 'Cancel', cegah perpindahan halaman
+    if (!konfirmasi) {
+        event.preventDefault(); 
+        return false;
+    }
+
+    // Jika 'OK', browser akan melanjutkan navigasi ke link yang ada di href
+    return true;
+}
+
+//fidi punya hal
+function searchTable() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toLowerCase();
+    const table = document.querySelector(".styled-table");
+    const tr = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName("td")[1]; // Kolom Pengusul
+        if (td) {
+            let txtValue = td.textContent || td.innerText;
+            tr[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+        }
+    }
+}
