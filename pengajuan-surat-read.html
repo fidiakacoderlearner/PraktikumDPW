@@ -3,62 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pengajuan Surat Tugas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Pengajuan Surat Tugas</h1>
-    </header>
-    <hr>
-    <nav>
-        <ul>
-            <li><a href="pengajuan-surat-create.html">Ajukan Surat Tugas</a></li>
-            <li><a href="#section2">Section 2</a></li>
-            <li><a href="#section3">Section 3</a></li>
-        </ul>
-    </nav>
-    <hr>
-    <section id="section1">
-        <h1>Section 1</h1>
-        <table border="1" align="center">
-            <thead>
-                <tr align="center">
-                    <td>No</td>
-                    <td>Pengusul</td>
-                    <td>Waktu Pelaksanaan</td>
-                    <td>Lama Pelaksanaan (Hari)</td>
-                    <td>Perihal</td>
-                    <td>Berkas Pendukung</td>
-                    <td>Aksi</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Fidi</td>
-                    <td>10 Feb 2026</td>
-                    <td>2</td>
-                    <td>Pengabdian</td>
-                    <td>file</td>
-                    <td><a href="pengajuan-surat-create.html">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ansori</td>
-                    <td>11 Feb 2026</td>
-                    <td>3</td>
-                    <td>Belajar</td>
-                    <td>file</td>
-                    <td><a href="pengajuan-surat-create.html">Edit</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="pengajuan-surat-create.html"><button>+Pengajuan Surat Tugas</button></a>
-    </section>
-    <hr>
-    <footer>
-        <p>&copy; Footer fidi</p>
-    </footer>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Website Kepegawaian</h2>
+            <ul>
+                <li>
+                    <a href="#" class="active">
+                        Tabel Pengajuan Surat
+                    </a>
+                </li>
+                <li>
+                    <a href="pengajuan-surat-create.html">
+                        Form Pengajuan Surat
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <header>
+                <h1>Pengajuan Surat Tugas</h1>
+            </header>
+            
+            <hr>
+            
+            <h3 align="center">Data Pengajuan Surat Tugas</h3>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Pengusul</th>
+                        <th>Waktu Pelaksanaan</th>
+                        <th>Lama (Hari)</th>
+                        <th>Perihal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Fidi</td>
+                        <td>10 Feb 2026</td>
+                        <td>2</td>
+                        <td>Pengabdian</td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="pengajuan-surat-create.html"><button class="btn-edit" onclick="handleEdit(1)">Edit</button></a>
+                                <button class="btn-delete" onclick="handleDelete(1)">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ansori</td>
+                        <td>11 Feb 2026</td>
+                        <td>3</td>
+                        <td>Pengabdian</td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="pengajuan-surat-create.html"><button class="btn-edit" onclick="handleEdit(2)">Edit</button></a>
+                                <button class="btn-delete" onclick="handleDelete(2)">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
 </body>
 </html>
