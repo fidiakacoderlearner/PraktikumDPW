@@ -156,6 +156,25 @@ hr {
 /* ==========================================
    4. STYLES KHUSUS HALAMAN READ 
    ========================================== */
+
+.read-page .search-container {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.read-page .search-container input[type="text"] {
+    padding: 8px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.read-page .search-container input[type="text"]:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 5px rgba(178, 34, 34, 0.3);
+}
+
 .read-page .styled-table {
     width: 100%;
     border-collapse: collapse;
