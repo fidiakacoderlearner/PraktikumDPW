@@ -1,0 +1,171 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/*Layout*/
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/*Sidebar*/
+
+.sidebar {
+    width: 250px;
+    background-color: #7a1c1c;
+    padding: 25px 20px;
+    color: white;
+}
+
+.sidebar h2 {
+    margin-bottom: 25px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sidebar a:hover {
+    background-color: #cb0202;
+}
+
+/* Main Content */
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+/* Header */
+
+header {
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #8b0000;
+}
+
+/* HR */
+
+hr {
+    height: 4px;
+    background-color: #b22222;
+    border: none;
+    margin-bottom: 30px;
+}
+
+/* FORM */
+
+form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 1200px; 
+    box-shadow: 0 4px 10px rgba(178, 34, 34, 0.2);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #7a1c1c;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #b22222;
+    outline: none;
+    box-shadow: 0 0 5px rgba(178, 34, 34, 0.3);
+}
+
+textarea {
+    resize: none;
+    min-height: 80px;
+}
+
+input[type="submit"] {
+    background-color: #b22222;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #8b0000;
+    cursor: pointer;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.input-error {
+    border-color: red !important;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+/* TABEL */
+
+table {
+    border-collapse: collapse; 
+    width: 100%; 
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+h3 {
+    color: #7a1c1c;
+    margin-bottom: 20px;
+}
+

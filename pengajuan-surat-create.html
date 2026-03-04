@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="pengajuan-surat-create.js"></script>
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Website Kepegawaian</h2>
+            <a href="pengajuan-surat-read.html">
+                Tabel Pengajuan Surat
+            </a>
+            <a href="#">
+                Form Pengajuan Surat
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+
+        <div class="main-content">
+
+            <header>
+                <h1>FORM Pengajuan Surat Tugas</h1>
+            </header>
+            
+
+            <hr>
+
+            <form id="formPengajuan">
+                <div>
+                    <label for="namaPengusul">Nama Pengusul:</label>
+                    <input type="text" id="namaPengusul" name="namaPengusul">
+                
+                    <small id="errorNama" class="error-text"></small>
+                </div>
+
+                <div>
+                    <label for="waktuPelaksanaan">Waktu Pelaksanaan:</label>
+                    <input type="date" id="waktuPelaksanaan" name="waktuPelaksanaan">
+                </div>
+
+                <div>
+                    <label for="lamaPelaksanaan">Lama Pelaksanaan:</label>
+                    <input
+                        type="number"
+                        id="lamaPelaksanaan"
+                        name="lamaPelaksanaan"
+                        min="1"
+                        max="365"
+                        placeholder="Jumlah hari"
+                        required
+                    >
+                    <small id="errorLama" class="error-text>"></small>
+                </div>
+
+                <div>
+                    <label for="perihal">Perihal:</label>
+                    <textarea id="perihal" name="perihal"></textarea>
+                
+                    <small id="errorPerihal" class="error-text"></small>
+                </div>
+
+                <div>
+                    <label for="berkasPendukung">Berkas Pendukung:</label>
+                    <input type="file" id="berkasPendukung" name="berkasPendukung">
+
+                    <small id="errorBerkas" class="error-text"></small>
+                </div>
+
+                <input type="submit" value="Ajukan Surat">
+            </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
