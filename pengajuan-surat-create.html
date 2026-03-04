@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
-<body>
+<body class="create-page">
 
     <div class="layout">
 
@@ -36,13 +37,14 @@
                 <h1>FORM Pengajuan Surat Tugas</h1>
             </header>
             
-
             <hr>
 
             <form>
                 <div>
                     <label for="namaPengusul">Nama Pengusul:</label>
                     <input type="text" id="namaPengusul" name="namaPengusul">
+
+                    <small id="errorNama" class="error-text"></small>
                 </div>
 
                 <div>
@@ -52,17 +54,30 @@
 
                 <div>
                     <label for="lamaPelaksanaan">Lama Pelaksanaan:</label>
-                    <input type="text" id="lamaPelaksanaan" name="lamaPelaksanaan">
+                    <input
+                        type="number"
+                        id="lamaPelaksanaan"
+                        name="lamaPelaksanaan"
+                        min="1"
+                        max="365"
+                        placeholder="Jumlah hari"
+                        required
+                    >
+                    <small id="errorLama" class="error-text>"></small>
                 </div>
 
                 <div>
                     <label for="perihal">Perihal:</label>
                     <textarea id="perihal" name="perihal"></textarea>
+
+                    <small id="errorPerihal" class="error-text"></small>
                 </div>
 
                 <div>
                     <label for="berkasPendukung">Berkas Pendukung:</label>
                     <input type="file" id="berkasPendukung" name="berkasPendukung">
+
+                    <small id="errorBerkas" class="error-text"></small>
                 </div>
 
                 <input type="submit" value="Ajukan Surat">
@@ -73,6 +88,5 @@
 
     </div>
 
-    
 </body>
 </html>

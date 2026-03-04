@@ -1,214 +1,211 @@
-/* Reset */
+/* ==========================================
+   1. VARIABLES & RESET
+   ========================================== */
+:root {
+    --primary-red: #7a1c1c;
+    --hover-red: #cb0202;
+    --light-red: #b22222;
+    --bg-gray: #f4f4f4;
+    --border-color: #d3a4a4;
+    --white: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--bg-gray);
 }
 
-/*Layout*/
-
+/* ==========================================
+   2. GLOBAL LAYOUT (Sama di semua halaman)
+   ========================================== */
 .layout {
     display: flex;
     min-height: 100vh;
 }
 
-/*Sidebar*/
-
 .sidebar {
     width: 250px;
-    background-color: #7a1c1c;
+    background-color: var(--primary-red);
     padding: 25px 20px;
-    color: white;
+    color: var(--white);
 }
 
-.sidebar h2 {
-    margin-bottom: 25px;
-}
-
-.sidebar ul {
-    list-style: none;
-}
+.sidebar h2 { margin-bottom: 25px; }
+.sidebar ul { list-style: none; }
 
 .sidebar a {
     display: block;
     text-decoration: none;
     text-align: center;
-    color: white;
+    color: var(--white);
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-.sidebar a:hover {
-    background-color: #cb0202;
-}
-
+.sidebar a:hover, 
 .sidebar .active {
-    background-color: #cb0202;
+    background-color: var(--hover-red);
 }
-
-/* Main Content */
 
 .main-content {
     flex: 1;
     padding: 40px;
 }
 
-/* Header */
-
-header {
-    margin-bottom: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+header h1 {
     color: #8b0000;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 20px;
 }
-
-/* HR */
 
 hr {
     height: 4px;
-    background-color: #b22222;
+    background-color: var(--light-red);
     border: none;
     margin-bottom: 30px;
 }
 
-/* FORM */
-
-form {
-    background-color: white;
+/* ==========================================
+   3. STYLES KHUSUS HALAMAN CREATE 
+   ========================================== */
+.create-page form {
+    background-color: var(--white);
     padding: 25px;
     border-radius: 20px;
     max-width: 1200px; 
     box-shadow: 0 4px 10px rgba(178, 34, 34, 0.2);
 }
 
-form div {
+.create-page form div {
     margin-bottom: 15px;
 }
 
-label {
+.create-page label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #7a1c1c;
+    color: var(--primary-red);
 }
 
-input[type="text"],
-input[type="date"],
-input[type="file"],
-textarea {
+.create-page input[type="text"],
+.create-page input[type="date"],
+.create-page input[type="file"],
+.create-page textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid #d3a4a4;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     font-size: 14px;
 }
 
-input:focus,
-textarea:focus {
-    border-color: #b22222;
-    outline: none;
-    box-shadow: 0 0 5px rgba(178, 34, 34, 0.3);
-}
-
-textarea {
+.create-page textarea {
     resize: none;
     min-height: 80px;
 }
 
-input[type="submit"] {
-    background-color: #b22222;
-    color: white;
+.create-page input:focus,
+.create-page textarea:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 5px rgba(178, 34, 34, 0.3);
+}
+
+.create-page input[type="submit"] {
+    background-color: var(--light-red);
+    color: var(--white);
     border: none;
     padding: 10px;
     width: 100%;
     border-radius: 5px;
-    font-size: 16px;
     font-weight: bold;
+    font-size: 16px;
 }
 
-input[type="submit"]:hover {
-    background-color: #8b0000;
+.create-page input[type="submit"]:hover {
+    background-color: var(--hover-red);
     cursor: pointer;
 }
 
-/* TABEL */
+.create-page .error-text {
+    color: var(--hover-red);
+    font-size: 12px;
+    margin-top: 4px;
+    display: block; 
+}   
 
-/* Styling Tabel Utama */
-.styled-table {
+.create-page .input-error {
+    border-color: var(--hover-red) !important;
+}
+
+.create-page input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+    font-size: 14px; 
+}
+
+/* ==========================================
+   4. STYLES KHUSUS HALAMAN READ 
+   ========================================== */
+.read-page .styled-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    padding: 20px;
 }
 
-.styled-table thead tr {
+.read-page .styled-table thead tr {
     background-color: #d60d0d; 
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+    color: var(--white);
 }
 
-.styled-table th, .styled-table td {
+.read-page .styled-table td,
+.read-page .styled-table th {
     padding: 12px 15px;
+    border: 1px solid var(--border-color);
 }
 
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+.read-page .styled-table tbody td:first-child {
+    text-align: center;
 }
 
-/* Zebra Striping (warna selang-seling) */
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-/* Styling Tombol Aksi */
-.action-buttons {
+.read-page .action-buttons {
     display: flex;
-    gap: 8px; /* Jarak antar tombol */
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
-button {
+.read-page .btn-edit,
+.read-page .btn-delete { 
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    border-radius: 5px; 
+    color: var(--white);
+    padding: 3px 10px; 
 }
 
-/* Tombol Edit - Biru */
-.btn-edit {
+.read-page .btn-edit { 
     background-color: #3498db;
-    color: white;
 }
 
-.btn-edit:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px); /* Efek sedikit naik */
+.read-page .btn-delete { 
+    background-color: #e74c3c; 
+    
 }
 
-/* Tombol Hapus - Merah */
-.btn-delete {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.btn-delete:hover {
-    background-color: #c0392b;
-    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
-}
-
-h3 {
-    color: #7a1c1c;
+.read-page h3 {
+    color: var(--primary-red);
     margin-bottom: 20px;
+    text-align: center;
 }
