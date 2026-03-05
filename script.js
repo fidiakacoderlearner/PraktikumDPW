@@ -1,4 +1,5 @@
-//create-page 
+//create-page
+//Bagian Arief 
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("formPengajuan");
@@ -73,9 +74,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* validasi berkas */
     function validasiBerkas() {
+        const file = berkasInput.files[0];
+        const maxSize = 5 * 1024 * 1024; // 5MB
 
         if (berkasInput.files.length === 0) {
             errorBerkas.textContent = "Berkas pendukung wajib diupload";
+            berkasInput.classList.add("input-error");
+            return false;
+        }
+
+        if (file.size > maxSize) {
+            berkasInput.value = ""; 
+            errorBerkas.textContent = "Ukuran file maksimal 5MB";
             berkasInput.classList.add("input-error");
             return false;
         }
@@ -118,7 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//tyo punya hal
+//read-page
+//Bagian Radityo
 function handleDelete(id) {
     // Validasi konfirmasi pengguna
     const yakin = confirm("Apakah Anda yakin ingin menghapus data nomor " + id + "?");
@@ -149,7 +160,7 @@ function handleEdit(id) {
     return true;
 }
 
-//fidi punya hal
+//Bagian Fidi
 function searchTable() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toLowerCase();
