@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="pengajuan-surat-create.js"></script>
+    <script src="script.js"></script>
 </head>
 
-<body>
+<body class="create-page">
 
     <div class="layout">
 
         <!-- Sidebar -->
         <aside class="sidebar">
             <h2>Website Kepegawaian</h2>
-            <a href="pengajuan-surat-read.html">
-                Tabel Pengajuan Surat
-            </a>
-            <a href="#">
-                Form Pengajuan Surat
-            </a>
+            <ul>
+                <li>
+                    <a href="pengajuan-surat-read.html">
+                        Tabel Pengajuan Surat
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="active">
+                        Form Pengajuan Surat
+                    </a>
+                </li>
+            </ul>
         </aside>
 
         <!-- Main Content -->
@@ -31,14 +37,13 @@
                 <h1>FORM Pengajuan Surat Tugas</h1>
             </header>
             
-
             <hr>
 
             <form id="formPengajuan">
                 <div>
                     <label for="namaPengusul">Nama Pengusul:</label>
                     <input type="text" id="namaPengusul" name="namaPengusul">
-                
+
                     <small id="errorNama" class="error-text"></small>
                 </div>
 
@@ -58,13 +63,13 @@
                         placeholder="Jumlah hari"
                         required
                     >
-                    <small id="errorLama" class="error-text>"></small>
+                    <small id="errorLama" class="error-text"></small>
                 </div>
 
                 <div>
                     <label for="perihal">Perihal:</label>
                     <textarea id="perihal" name="perihal"></textarea>
-                
+
                     <small id="errorPerihal" class="error-text"></small>
                 </div>
 
@@ -83,6 +88,5 @@
 
     </div>
 
-    
 </body>
 </html>
