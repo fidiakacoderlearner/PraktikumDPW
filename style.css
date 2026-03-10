@@ -1,6 +1,4 @@
-/* ==========================================
-   1. VARIABLES & RESET
-   ========================================== */
+/* Variabel dan reset */
 :root {
     --primary-red: #7a1c1c;
     --hover-red: #cb0202;
@@ -21,9 +19,7 @@ body {
     background-color: var(--bg-gray);
 }
 
-/* ==========================================
-   2. GLOBAL LAYOUT (Sama di semua halaman)
-   ========================================== */
+/* Global layout */
 .layout {
     display: flex;
     min-height: 100vh;
@@ -73,9 +69,7 @@ hr {
     margin-bottom: 30px;
 }
 
-/* ==========================================
-   3. STYLES KHUSUS HALAMAN CREATE 
-   ========================================== */
+/* styles khusus halaman create */
 .create-page form {
     background-color: var(--white);
     padding: 25px;
@@ -153,9 +147,7 @@ hr {
     font-size: 14px; 
 }
 
-/* ==========================================
-   4. STYLES KHUSUS HALAMAN READ 
-   ========================================== */
+/* styles khusus halaman read */
 
 .read-page .search-container {
     margin-bottom: 15px;
