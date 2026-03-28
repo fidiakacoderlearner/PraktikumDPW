@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pangkat Golongan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+      body,html{
+        height: 100%;margin: 0;
+        font-family: 'Poppins', sans-serif;
+      }
+      .wrapper{
+        min-height: 100vh; display: flex; flex-direction: column;
+      }
+
+      .main-wrapper{
+        display: flex;
+        flex:1;
+        overflow: hidden;
+        min-height: 90vh;
+      }
+
+      .navbar{
+        height: 10vh;
+        background: #A61f17; 
+        color: white;
+      }
+      .sidebar{
+        width: 280px;
+        background-color:  white; 
+        color: black;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border-color: #A61f17;
+        border-right: 60px;
+        
+      }
+      .content-area{
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+     
+      .primary-nav{
+        flex: 1 !important; 
+      }
+
+      .mt-auto{
+        margin-top: auto !important; 
+      }
+      
+      .nav-item{
+        font-size: 18px;
+      }
+
+    
+      .sidebar .nav-link {
+          color: black; 
+          border-radius: 8px;        
+          margin-bottom: 5px;
+          padding: 12px 15px;
+          font-weight: 500;
+          font-size: 14px;
+      }
+
+      .sidebar .nav-link:hover {
+          background-color: rgba(108, 103, 103, 0.2); 
+                  
+      }
+
+      .sidebar .nav-link.active{
+        background-color: #A61f17;
+        color: white;
+      }
+
+      .content-area{
+        font-size: 14px;
+        input, textarea{
+          font-size: 14px;
+        }
+        button{
+          font-size: 14px;
+        }
+      }
+
+     
+  
+    </style>
+</head> 
+<body>
+   <div class="wrapper">
+    <nav class="navbar sticky-top">
+      <div class="d-flex align-items-center gap-2">
+
+        <!-- TOMBOL -->
+        <button class="btn d-md-none text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#SidebarMenu">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- LOGO -->
+        <img src="logo.png" height="35px" alt="unri">
+
+      </div>
+    </nav>
+
+      <div class="main-wrapper">
+        <div class="offcanvas-md offcanvas-start sidebar" data-bs-scroll="true" tabindex="-1" id="SidebarMenu">
+          <div class="offcanvas-header d-md-none border-bottom justify-content-between">
+            <h5 class="offcanvas-title fw-bold text-center w-100">Menu Utama</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#SidebarMenu" aria-label="Close"></button>
+          </div>
+
+          <div class="offcanvas-body d-flex flex-column h-100">
+              <h5 class="fw-bold border-bottom p-3 text-center d-none d-md-block">Menu Utama</h5>
+            <ul class="nav flex-column primary-nav mx-2">
+              <li class="nav-item">
+                <!-- JANGAN LUPA TAMBAHIN ACTIVE, MISAL class="nav-link active" KALO LAGI DI PAGES DATA DIRI -->
+                <a href="#" class="nav-link"><i class="bi bi-person me-2"></i>Data Diri</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex justify-content-between align-items-center w-100" data-bs-toggle="collapse" href="#menupengajuan">
+                  <span><i class="bi bi-envelope-plus-fill me-2"></i>Pengajuan Surat Tugas</span>
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse show" id="menupengajuan">
+                  <ul class="nav flex-column ms-4 border-start ps-3 mb-2 small">
+                    <li><a href="pengajuan-surat-tugas-create.html" class="nav-link"><i class="bi bi-plus-circle me-2"></i>Tambah Data</a></li>
+                    <li><a href="pengajuan-surat-tugas-read.html" class="nav-link active"><i class="bi bi-eye me-2"></i>Lihat Data</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link d-flex justify-content-between align-items-center w-100" data-bs-toggle="collapse" href="#menujabfung">
+                  <span><i class="bi bi-person-vcard me-2"></i>Data Jabatan Fungsional</span>
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="menujabfung">
+                  <ul class="nav flex-column ms-4 border-start ps-3 mb-2 small">
+                    <li><a href="jabfung-create.html" class="nav-link"><i class="bi bi-plus-circle me-2"></i>Tambah Data</a></li>
+                    <li><a href="index (4).html" class="nav-link"><i class="bi bi-eye me-2"></i>Lihat Data</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link  d-flex justify-content-between align-items-center w-100" data-bs-toggle="collapse" href="#menudatagol">
+                  <span><i class="bi bi-award me-2"></i>Data Pangkat Golongan</span>
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="menudatagol">
+                  <ul class="nav flex-column ms-4 border-start ps-3 mb-2 small">
+                    <li><a href="pangkat-create.html" class="nav-link"><i class="bi bi-plus-circle me-2"></i>Tambah Data</a></li>
+                    <li><a href="index (4).html" class="nav-link"><i class="bi bi-eye me-2"></i>Lihat Data</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+
+            <li class="nav-item mx-2">
+              <a class="nav-link d-flex justify-content-between align-items-center w-100 border-top" data-bs-toggle="collapse" href="#profile">
+                <span> <i class="bi bi-person-circle me-2"></i>Khairul Umam</span>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <div class="collapse" id="profile">
+                <ul class="nav flex-column ms-4 border-start ps-3 mb-2 small">
+                  <li><a href="#" class="nav-link text-danger" id="btnLogout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                </ul>
+              </div>
+            </li>
+          </div>
+        </div>
+
+        <main class="content-area bg-light">
+          <div class="p-4 w-100">
+            <h4 class="fw-bold text-center mb-3">Pengajuan Surat Tugas</h4>
+
+            <div class="card border-0 shadow-sm p-4 w-100" style="border-radius: 12px;">
+              <form id="formPengajuan" action="#" method="POST" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="id_pengajuan" value="STG-001">
+
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Nama Pengusul</label>
+                    <input type="text"
+                          class="form-control"
+                          name="nama_pengusul"
+                          value="Khairul Umam"
+                          pattern="^[^0-9]+$"
+                          required>
+                    <div class="invalid-feedback">
+                        Nama tidak boleh mengandung angka!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Waktu Pelaksanaan</label>
+                    <input type="date"
+                          class="form-control"
+                          name="waktu_pelaksanaan"
+                          value="2026-04-10"
+                          required>
+                    <div class="invalid-feedback">
+                        Waktu pelaksanaan wajib dipilih!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Lama Pelaksanaan</label>
+                    <div class="input-group has-validation">
+                        <input type="number"
+                              class="form-control"
+                              name="lama_pelaksanaan"
+                              value="3"
+                              min="1"
+                              required>
+                        <span class="input-group-text">Hari</span>
+                        <div class="invalid-feedback">
+                            Minimal 1 hari.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Perihal</label>
+                    <textarea class="form-control"
+                              name="perihal"
+                              rows="4"
+                              required>Mengikuti workshop pengembangan sistem informasi akademik.</textarea>
+                    <div class="invalid-feedback">
+                        Perihal wajib diisi!
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label fw-medium">Berkas Pendukung</label>
+
+                  <div id="container-file-lama" class="mb-2 p-2 border rounded bg-light d-flex align-items-center justify-content-between" style="max-width: 400px;">
+                      <div class="d-flex align-items-center">
+                          <i class="bi bi-file-earmark-pdf-fill text-danger fs-5 me-2"></i>
+                          <a href="path/to/surat_tugas.pdf" target="_blank" class="text-decoration-none fw-bold text-primary small">
+                              surat_tugas.pdf
+                          </a>
+                      </div>
+                      <button type="button" class="btn btn-sm btn-outline-danger border-0" onclick="hapusFileLama()" title="Hapus file ini">
+                          <i class="bi bi-x-circle-fill"></i>
+                      </button>
+                  </div>
+
+                  <input type="hidden" name="status_file_lama" id="status_file_lama" value="ada">
+
+                  <input 
+                        id="berkas"
+                        class="form-control mt-2"
+                        type="file"
+                        name="berkas"
+                        accept=".pdf,.jpg,.png,.docx">
+
+                  <div class="form-text">
+                      Pilih file baru jika ingin mengganti. Ukuran maksimal 2MB.
+                  </div>
+              </div>
+
+                <div class="text-end mt-4">
+                    <a href="pengajuan-surat-tugas-read.html"
+                      class="btn btn-light border me-2 px-4">
+                      Batal
+                    </a>
+
+                    <button type="submit"
+                            class="btn text-white fw-bold px-5"
+                            style="background-color:#dc3545;border-radius:8px;">
+                        <i class="bi bi-save me-2"></i>
+                        Update Data
+                    </button>
+                </div>
+
+            </form>
+            </div>
+          </div>
+        </main>
+      </div>
+        <footer class="mt-auto py-4 border-top px-4" style="background-color: #A61f17; min-height: 200px; width: 100%; color: white;">
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-md-4 mb-3">
+                      <img src="logo.png" alt="" style="height: 40px;" class="mb-2">
+                      <p class="small">Fakultas Teknik, Kampus Binawidya, JL. HR Soebrantas KM.12.5, Simpang Baru, Panam</p>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                      <ul class="list-unstyled">
+                          <li><i class="bi bi-instagram me-2"></i>Instagram</li>
+                          <li><i class="bi bi-facebook me-2"></i>Facebook</li>
+                          <li><i class="bi bi-twitter-x me-2"></i>Twitter</li>
+                      </ul> 
+                  </div>
+              </div> 
+              <hr>
+              <p class="text-center mb-0 small">© 2026 Fakultas Teknik UNRI</p>
+          </div> 
+        </footer>
+   </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+    <script>
+      // Logout dengan SweetAlert2
+      document.getElementById('btnLogout').addEventListener('click',function(){
+        Swal.fire({ 
+          title: "Apakah anda yakin?",
+          text: "Anda akan kembali ke halaman login!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Ya,Logout!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Logut!",
+              text: "Anda telah logout",
+              icon: "success"
+            });
+            setTimeout(() =>{
+            window.location.href = 'login.html';
+          },1500)
+          }
+        });
+      })
+      
+      // Validasi Form Pengajuan Surat Tugas
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("formPengajuan");
+
+        const inputs = form.querySelectorAll("input, textarea");
+        const berkasInput = document.getElementById("berkas");
+        const berkasFeedback = document.getElementById("berkas-feedback");
+
+        // validasi ukuran file
+        inputs.forEach(input => {
+          input.addEventListener('input', function () {
+              if (this.id === 'berkas' && this.files.length > 0) {
+                  const fileSize = this.files[0].size;
+                  const maxSize = 2 * 1024 * 1024;
+
+                  if (fileSize > maxSize) {
+                      this.setCustomValidity("Ukuran file terlalu besar"); 
+                      berkasFeedback.textContent = "Ukuran file maksimal 2MB!";
+                  } else {
+                      this.setCustomValidity("");
+                      berkasFeedback.textContent = "Berkas wajib diupload sesuai format!";
+                  }
+              }
+
+              // Cek apakah input ini valid berdasarkan aturan di HTML (pattern, required, min)
+              if (!this.checkValidity()) {
+                  this.classList.add('is-invalid');
+                  this.classList.remove('is-valid');
+              } else {
+                  this.classList.remove('is-invalid');
+                  this.classList.add('is-valid'); 
+              }
+          });
+        });
+
+        // validasi saat tombol Submit diklik
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); 
+          event.stopPropagation(); 
+
+          if (!form.checkValidity()) {              
+              // semua field kosong/salah memunculkan warna merah
+              inputs.forEach(input => {
+                  if (!input.checkValidity()) {
+                      input.classList.add('is-invalid');
+                  }
+              });
+
+              // memunculkan Pop-up Error
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Tolong lengkapi semua data dengan benar sebelum mengajukan!',
+                  confirmButtonColor: '#d33'
+              });
+
+          } else {
+              // memunculkan Pop-up Konfirmasi/semua field valid 
+              Swal.fire({
+                  title: 'Konfirmasi Pengajuan',
+                  text: "Apakah Anda yakin data yang diisi sudah benar?",
+                  icon: 'question',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6', 
+                  cancelButtonColor: '#d33',  
+                  confirmButtonText: 'Ya, Ajukan!',
+              }).then((result) => {
+                  // event setelah user memilih
+                  if (result.isConfirmed) {
+                      Swal.fire({
+                          title: 'Berhasil!',
+                          text: 'Pengajuan surat tugas sedang diproses.',
+                          icon: 'success',
+                          confirmButtonColor: '#3085d6'
+                      }).then(() => {
+                          // setelah user menutup pop-up sukses, arahkan ke halaman read
+                          window.location.href = "pengajuan-surat-tugas-read.html";
+                      });
+                  }
+              });
+          }
+        }, false);
+      });
+
+      function hapusFileLama() {
+          Swal.fire({
+              title: "Hapus berkas ini?",
+              text: "Berkas lama akan ditandai untuk dihapus dari sistem.",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#dc3545",
+              cancelButtonColor: "#6c757d",
+              confirmButtonText: "Ya, Hapus!",
+              cancelButtonText: "Batal"
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  // Sembunyikan tampilan file lama
+                  document.getElementById('container-file-lama').classList.add('d-none');
+                  
+                  // Ubah nilai hidden input jadi 'hapus' agar backend tahu file ini dibuang
+                  document.getElementById('status_file_lama').value = 'hapus';
+                  
+                  Swal.fire({
+                      title: "Terhapus!",
+                      text: "Silakan upload berkas baru jika diperlukan.",
+                      icon: "success",
+                      timer: 1500,
+                      showConfirmButton: false
+                  });
+              }
+          });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

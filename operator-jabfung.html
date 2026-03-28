@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Operator - Jabatan Fungsional</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+
+    <style>
+      body,html{
+        height: 100%;margin: 0;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .wrapper{
+        min-height: 100vh; display: flex; flex-direction: column;
+      }
+
+      .main-wrapper{
+        display: flex;
+        flex:1;
+        min-height: 90vh;
+      }
+
+      .navbar{
+        height: 10vh;
+        background: #A61f17; 
+        color: white;
+      }
+
+      .sidebar{
+        width: 280px;
+        background-color: white; 
+        color: black;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border-color: #A61f17;
+      }
+
+      .content-area{
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        overflow-y: auto;
+        font-size: 14px;
+        overflow-x: auto;
+      }
+
+      .content-area button{
+        font-size: 14px;
+      }
+     
+      .primary-nav{
+        flex: 1 !important; 
+      }
+
+      .mt-auto{
+        margin-top: auto !important; 
+      }
+      
+      .nav-item{
+        font-size: 18px;
+      }
+    
+      .sidebar .nav-link {
+        color: black; 
+        border-radius: 8px;        
+        margin-bottom: 5px;
+        padding: 12px 15px;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .sidebar .nav-link:hover {
+        background-color: rgba(108, 103, 103, 0.2); 
+      }
+
+      .sidebar .nav-link.active{
+        background-color: #A61f17;
+        color: white;
+      }
+
+      .table-custom-header {
+          background-color: #f8d7da; 
+      }
+
+      .page-link {
+          padding: 0.25rem 0.5rem;
+          font-size: 0.75rem;      
+          min-width: 30px;         
+          text-align: center;     
+      }
+
+      .table-responsive{
+        overflow-x: auto;
+      }
+
+      #tableJabfung_wrapper.is-scrollable .dt-layout-row {
+        display: flex;
+        flex-direction: column;
+      }
+      #tableJabfung_wrapper.is-scrollable .dt-layout-start,
+      #tableJabfung_wrapper.is-scrollable .dt-layout-end {
+        text-align: left !important;
+        justify-content: flex-start !important;
+        width: 100%;
+      }
+
+      table {
+        white-space: nowrap;
+      }
+    </style>
+</head> 
+<body>
+   <div class="wrapper">
+    <nav class="navbar sticky-top">
+      <div class="d-flex align-items-center gap-2 px-3">
+        <button class="btn d-md-none text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#SidebarMenu">
+            <i class="bi bi-list"></i>
+        </button>
+        <img src="logo.png" height="35px" alt="unri">
+      </div>
+    </nav>
+
+      <div class="main-wrapper">
+        <div class="offcanvas-md offcanvas-start sidebar border-end" data-bs-scroll="true" tabindex="-1" id="SidebarMenu">
+          <div class="offcanvas-header d-md-none border-bottom justify-content-between">
+            <h5 class="offcanvas-title fw-bold text-center w-100">Menu Utama</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#SidebarMenu" aria-label="Close"></button>
+          </div>
+
+          <div class="offcanvas-body d-flex flex-column h-100">
+              <h5 class="fw-bold border-bottom p-3 text-center d-none d-md-block">Menu Utama</h5>
+            <ul class="nav flex-column primary-nav mx-2 mt-2">
+              
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center w-100" href="operator-surat-tugas.html">
+                  <i class="bi bi-envelope-plus-fill me-2"></i>Pengajuan Surat Tugas
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link active d-flex align-items-center w-100" href="operator-jabfung.html">
+                  <i class="bi bi-person-vcard me-2"></i>Data Jabatan Fungsional
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center w-100" href="operator-pangkat.html">
+                  <i class="bi bi-award me-2"></i>Data Pangkat Golongan
+                </a>
+              </li>
+            </ul>
+
+            <li class="nav-item mx-2 mb-3 list-unstyled">
+              <a class="nav-link d-flex justify-content-between align-items-center w-100 border-top pt-2" data-bs-toggle="collapse" href="#profile">
+                <span> <i class="bi bi-person-circle me-2"></i>Operator</span>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <div class="collapse" id="profile">
+                <ul class="nav flex-column ms-4 border-start ps-3 mb-2 small mt-2">
+                  <li><a href="#" class="nav-link text-danger" id="btnLogout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                </ul>
+              </div>
+            </li>
+          </div>
+        </div>
+
+        <main class="content-area bg-light">
+          <div class="p-4 w-100">
+            <h4 class="fw-bold text-center mb-4">Verifikasi Data Jabatan Fungsional</h4>
+
+            <div class="card border-0 shadow-sm pt-3 px-4 pb-4 w-100" style="border-radius: 12px;">
+
+              <div class="table-responsive">
+                  <table id="tableJabfung" class="table table-hover align-middle border">
+                      <thead>
+                          <tr class="table-custom-header">
+                              <th scope="col" class="text-center">No</th>
+                              <th scope="col">Nama Pegawai</th>
+                              <th scope="col">Jabatan Fungsional</th>
+                              <th scope="col">TMT</th>
+                              <th scope="col" class="text-center">Status</th>
+                              <th scope="col" class="text-center">Aksi</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td class="text-center">1</td>
+                              <td class="fw-medium">Afdhal Fidi Ansori</td>
+                              <td>Lektor</td>
+                              <td>01 Januari 2024</td>
+                              <td class="text-center"><span class="badge bg-warning text-dark rounded-pill">Menunggu</span></td>
+                              <td class="text-center">
+                                  <button class="btn btn-sm btn-info text-white me-1" onclick="lihatDetail('Afdhal Fidi Ansori', 'Lektor', '01 Januari 2024')" title="Lihat Detail"><i class="bi bi-eye"></i></button>
+                                  <button class="btn btn-sm btn-success me-1" onclick="verifikasiData('Afdhal Fidi Ansori', this)" title="Verifikasi"><i class="bi bi-check-circle"></i></button>
+                                  <button class="btn btn-sm btn-danger" onclick="hapusData('Afdhal Fidi Ansori', this)" title="Hapus"><i class="bi bi-trash"></i></button>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">2</td>
+                              <td class="fw-medium">Aulia Arief</td>
+                              <td>Asisten Ahli</td>
+                              <td>15 Mei 2023</td>
+                              <td class="text-center"><span class="badge bg-success rounded-pill">Diverifikasi</span></td>
+                              <td class="text-center">
+                                  <button class="btn btn-sm btn-info text-white me-1" onclick="lihatDetail('Aulia Arief', 'Asisten Ahli', '15 Mei 2023')" title="Lihat Detail"><i class="bi bi-eye"></i></button>
+                                  <button class="btn btn-sm btn-success me-1" disabled title="Sudah Diverifikasi"><i class="bi bi-check-circle"></i></button>
+                                  <button class="btn btn-sm btn-danger" onclick="hapusData('Aulia Arief', this)" title="Hapus"><i class="bi bi-trash"></i></button>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">3</td>
+                              <td class="fw-medium">Muhamad Radityo Pratama</td>
+                              <td>Lektor Kepala</td>
+                              <td>10 Oktober 2023</td>
+                              <td class="text-center"><span class="badge bg-warning text-dark rounded-pill">Menunggu</span></td>
+                              <td class="text-center">
+                                  <button class="btn btn-sm btn-info text-white me-1" onclick="lihatDetail('Muhamad Radityo Pratama', 'Lektor Kepala', '10 Oktober 2023')" title="Lihat Detail"><i class="bi bi-eye"></i></button>
+                                  <button class="btn btn-sm btn-success me-1" onclick="verifikasiData('Muhamad Radityo Pratama', this)" title="Verifikasi"><i class="bi bi-check-circle"></i></button>
+                                  <button class="btn btn-sm btn-danger" onclick="hapusData('Muhamad Radityo Pratama', this)" title="Hapus"><i class="bi bi-trash"></i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+
+            </div>
+          </div>
+        </main>
+      </div>
+      
+        <footer class="mt-auto py-4 border-top px-4" style="background-color: #A61f17; min-height: 200px; width: 100%; color: white;">
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-md-4 mb-3">
+                      <img src="logo.png" alt="" style="height: 40px;" class="mb-2">
+                      <p class="small">Fakultas Teknik, Kampus Binawidya, JL. HR Soebrantas KM.12.5, Simpang Baru, Panam</p>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                      <ul class="list-unstyled">
+                          <li><i class="bi bi-instagram me-2"></i>Instagram</li>
+                          <li><i class="bi bi-facebook me-2"></i>Facebook</li>
+                          <li><i class="bi bi-twitter-x me-2"></i>Twitter</li>
+                      </ul> 
+                  </div>
+              </div> 
+              <hr>
+              <p class="text-center mb-0 small">© 2026 Fakultas Teknik UNRI</p>
+          </div> 
+        </footer>
+   </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script>
+      // Logout
+      document.getElementById('btnLogout').addEventListener('click', function(e){
+        e.preventDefault();
+        Swal.fire({ 
+          title: "Apakah anda yakin?",
+          text: "Anda akan kembali ke halaman login!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#A61f17",
+          cancelButtonColor: "#6c757d",
+          confirmButtonText: "Ya, Logout!",
+          cancelButtonText: "Batal"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Logout!",
+              text: "Anda telah berhasil logout.",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            setTimeout(() =>{
+              window.location.href = 'login.html';
+            }, 1500);
+          }
+        });
+      });
+
+      // Variabel global untuk menyimpan instance DataTable
+      var table;
+
+      // Fungsi Lihat Detail Selengkapnya
+      function lihatDetail(nama, jabfung, tmt) {
+          Swal.fire({
+              title: `Detail Jabatan Fungsional`,
+              html: `
+                <div class="text-start mt-3" style="font-size: 14px;">
+                    <p><strong>Nama Pegawai:</strong> ${nama}</p>
+                    <p><strong>Jabatan Fungsional:</strong> ${jabfung}</p>
+                    <p><strong>TMT:</strong> ${tmt}</p>
+                    <p><strong>Berkas Pendukung:</strong> <a href="#" class="text-primary text-decoration-none"><i class="bi bi-file-earmark-pdf"></i> sk_jabfung_${nama.replace(/\s+/g, '_').toLowerCase()}.pdf</a></p>
+                </div>
+              `,
+              icon: 'info',
+              confirmButtonColor: '#A61f17',
+              confirmButtonText: 'Tutup'
+          });
+      }
+
+      // Fungsi Verifikasi (Approve)
+      window.verifikasiData = function(nama, btn) {
+          Swal.fire({
+              title: 'Verifikasi Data?',
+              text: `Anda akan memverifikasi data jabatan fungsional atas nama ${nama}.`,
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonColor: '#198754', // Warna hijau success
+              cancelButtonColor: '#6c757d',
+              confirmButtonText: 'Ya, Verifikasi!',
+              cancelButtonText: 'Batal'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                var row = $(btn).closest('tr');
+                row.find('td:eq(4)').html('<span class="badge bg-success rounded-pill">Diverifikasi</span>');
+                $(btn).prop('disabled', true).attr('title', 'Sudah Diverifikasi');  
+                Swal.fire(
+                      'Diverifikasi!',
+                      `Data ${nama} telah berhasil diverifikasi.`,
+                      'success'
+                  )
+              }
+          });
+      }
+
+      // Fungsi Hapus Data (Delete)
+      window.hapusData = function(nama, btn) {
+          Swal.fire({
+              title: 'Hapus Data?',
+              text: `Anda yakin ingin menghapus data jabatan ${nama}? Tindakan ini tidak dapat dibatalkan.`,
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#d33', // Warna merah danger
+              cancelButtonColor: '#6c757d',
+              confirmButtonText: 'Ya, Hapus!',
+              cancelButtonText: 'Batal'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                table.row($(btn).parents('tr')).remove().draw();
+                table.column(0, { search: 'applied', order:'applied'}).nodes().each(function(cell, i) {
+                  cell.innerHTML = i + 1; // Update nomor urut setelah hapus
+                });
+                Swal.fire(
+                      'Terhapus!',
+                      `Data ${nama} telah dihapus dari sistem.`,
+                      'success'
+                )
+              }
+          });
+      }
+
+      // Pagination dan fitur DataTables
+      $(document).ready(function() {
+        table = $('#tableJabfung').DataTable({
+          "language": {
+              "url": "https://cdn.datatables.net/plug-ins/1.13.4/i18n/id.json",
+              "paginate": {
+                  "previous": "<",
+                  "next": ">",
+                  "first": "<<",
+                  "last": ">>"
+              }
+          },      
+          "lengthChange": false, 
+          "pageLength": 10, 
+          "columnDefs": [
+              { "orderable": false, "targets": [0, 5] }
+          ],
+        });
+      });
+    </script>
+</body>
+</html>
