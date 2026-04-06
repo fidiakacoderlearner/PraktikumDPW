@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-desain FT UNRI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --unri-red: #cc0000;
+            --unri-dark: #a30000;
+        }
+        
+        body { 
+            background-color: #f8f9fa; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- STYLING NAVBAR & DROPDOWN --- */
+        .navbar-unri {
+            background-color: var(--unri-red);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1030; /* Memastikan navbar di atas hero */
+        }
+        .navbar-unri .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .navbar-unri .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: 0.3s;
+            padding: 20px 10px !important; /* Padding disesuaikan agar menempel */
+        }
+        .navbar-unri .nav-link:hover {
+            color: #fff !important;
+        }
+        
+        /* Dropdown Styling - Paksa Menempel */
+        .dropdown-toggle::after { display: none !important; }
+        .nav-link .bi-chevron-down {
+            transition: transform 0.3s ease;
+            display: inline-block;
+            font-size: 0.75rem;
+            margin-left: 3px;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 10px 0;
+            border-top: 3px solid var(--unri-dark);
+            max-height: 80vh; 
+            overflow-y: auto; 
+            
+            /* Kode Paksa Menempel Bawah Navbar */
+            position: absolute !important;
+            top: 100% !important;
+            margin-top: 0 !important;
+            transform: none !important;
+            display: none;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            color: #444;
+            border-bottom: 1px solid #f1f1f1;
+            transition: 0.2s;
+        }
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: var(--unri-red);
+            padding-left: 25px; 
+        }
+
+        /* Hover Effect Desktop */
+        @media (min-width: 992px) {
+            .navbar-expand-lg .nav-item.dropdown:hover .dropdown-menu { 
+                display: block; 
+            }
+            .navbar-expand-lg .nav-item.dropdown:hover .bi-chevron-down { 
+                transform: rotate(180deg); 
+            }
+        }
+
+        /* --- STYLING HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            height: 60vh; 
+            min-height: 500px;
+            background: url('https://i.ytimg.com/vi/GqMWWsQhznU/maxresdefault.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            background-attachment: fixed;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(1.5px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding-left: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-hero {
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-unri sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">
+                <span class="fs-4">UNRI</span> <span class="fs-6 fw-normal">| FAKULTAS TEKNIK</span>
+            </a>
+            <button class="navbar-toggler border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfil">
+                            Profil <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Sejarah</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                            <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
+                            <li><a class="dropdown-item" href="#">Tujuan</a></li>
+                            <li><a class="dropdown-item" href="#">Pimpinan</a></li>
+                            <li><a class="dropdown-item" href="#">Sambutan Dekan</a></li>
+                            <li><a class="dropdown-item" href="#">Akreditasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAkademik">
+                            Akademik <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Kalender Akademik</a></li>
+                            <li><a class="dropdown-item" href="#">Peraturan Terkait</a></li>
+                            <li><a class="dropdown-item" href="#">Pedoman Akademik</a></li>
+                            <li><a class="dropdown-item" href="#">SOP Akademik</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Mesin</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Elektro</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Arsitektur</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Sipil</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Kimia</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">SDM</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPPID">
+                            PPID <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profil Singkat</a></li>
+                            <li><a class="dropdown-item" href="#">Gambaran Umum</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                            <li><a class="dropdown-item" href="#">Surat Keputusan</a></li>
+                            <li><a class="dropdown-item" href="#">Tugas dan Tanggung Jawab</a></li>
+                            <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
+                            <li><a class="dropdown-item" href="#">SOP PPID</a></li>
+                            <li><a class="dropdown-item" href="#">Layanan Terkait</a></li>
+                            <li><a class="dropdown-item" href="#">Layanan Informasi</a></li>
+                            <li><a class="dropdown-item" href="#">Informasi Wajib Berkala</a></li>
+                            <li><a class="dropdown-item" href="#">Informasi Tersedia Setiap Saat</a></li>
+                            <li><a class="dropdown-item" href="#">Daftar Informasi Publik Online</a></li>
+                            <li><a class="dropdown-item" href="#">Formulir Permohonan dan Keberatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">K3L</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">SPM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kerjasama</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Building the Future with Engineering Excellence</h1>
+                <p>
+                    Selamat Datang di Fakultas Teknik Universitas Riau. Wadah inovasi, riset, dan pengembangan teknologi unggul untuk kemajuan bangsa.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="btn btn-danger btn-hero">Eksplorasi Berita</a>
+                    <a href="#" class="btn btn-outline-light btn-hero">Profil Fakultas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
