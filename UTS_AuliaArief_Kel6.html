@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-desain FT UNRI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --unri-red: #cc0000;
+            --unri-dark: #a30000;
+        }
+        
+        body { 
+            background-color: #f8f9fa; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Berita --- */
+        .news-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .news-img {
+            width: 100%;
+            object-fit: cover;
+        }
+        .img-featured { 
+            aspect-ratio: 16/9; 
+        }
+
+        .img-small {
+            aspect-ratio: 4/3; 
+        }
+        
+        .badge-inline {
+            background-color: #df2c3b; 
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+            width: max-content;
+        }
+
+        .news-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            transition: 0.3s ease;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* ===== Card Dekan ===== */
+        .dean-card {
+            border-radius: 14px;
+            overflow: hidden; 
+        }
+
+        .dean-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dean-card:hover {
+            transform: none !important;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="py-5">
+        <div class="container">
+            <div class="card dean-card border-0 shadow-sm">
+                <div class="row g-0 align-items-stretch">
+
+                    <div class="col-md-4">
+                        <img src="https://is3.cloudhost.id/cms-unri/ft.unri.ac.id/media/14577/hVpH6wgdDcUu4j0JbmJT0FStLy1EhY04eOrri0jq.jpg" class="dean-img" alt="Dekan FT UNRI">
+                    </div>
+
+                    <div class="col-md-8 p-4">
+                        <h3 class="fw-bold mb-1 mt-3">Prof. Ahmad Fadli, STM, Ph.D.</h3>
+                        <small class="text-muted mb-3">Dekan Fakultas Teknik Universitas Riau</small>
+
+                        <p class="fs-4 text-muted fst-italic mt-5">
+                            "Kami di Fakultas Teknik Universitas Riau tidak hanya berfokus pada penguasaan ilmu pengetahuan dan teknologi, 
+                            tetapi juga pada penguatan nilai-nilai kepemimpinan, etika profesional, dan semangat inovasi. Mahasiswa kami 
+                            dibina untuk menjadi lulusan yang adaptif, kolaboratif, dan berdaya saing tinggi dalam menghadapi era transformasi 
+                            digital dan revolusi industri. Kami percaya bahwa Fakultas Teknik UNRI adalah tempat terbaik bagi Anda untuk 
+                            mengembangkan potensi dan membangun masa depan. Terima kasih atas kepercayaan Anda kepada kami."
+                        </p>              
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mt-5 pt-3">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <h2 class="fw-bold mb-0" style="color: var(--unri-red);">Berita</h2>
+                <p class="text-muted mb-0 mt-1">Informasi dan berita terbaru seputar Fakultas Teknik</p>
+            </div>
+            <a href="#" class="btn btn-outline-danger btn-sm d-none d-md-block">Lihat Semua Berita</a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="news-card position-relative" style="cursor: pointer;">
+                    <img src="https://picsum.photos/id/180/800/450" class="news-img img-featured" alt="Berita Utama">
+                    <div class="news-content">
+                        <span class="badge-inline">Berita Utama</span>
+                        <small class="text-muted mb-1" style="font-size: 0.95rem;">06 April 2026</small>
+                        
+                        <h3 class="fw-bold mt-2">Sinergi Strategis: FT UNRI & PT KPI Unit II Dumai</h3>
+                        <p class="text-secondary mb-0">Kerjasama berkelanjutan untuk meningkatkan kualitas SDM dan inovasi teknologi di lingkungan kampus guna menghadapi tantangan industri masa depan...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row g-4 h-100">
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/20/400/300" class="news-img img-small" alt="Berita 1">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">BERITA</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">12 Februari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">Peringatan Bulan K3 Nasional FT UNRI Berjalan Lancar</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/48/400/300" class="news-img img-small" alt="Berita 2">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">BERITA</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">04 Februari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">MoA STT Nusantara Mandiri Duri dan FT Universitas Riau</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/60/400/300" class="news-img img-small" alt="Berita 3">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">AKADEMIK</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">31 Januari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">Rapat Kerja Fakultas Teknik Tahun Penganggaran 2027</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/119/400/300" class="news-img img-small" alt="Berita 4">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">INFO</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">25 Januari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">Sharing Session Bersama Alumni Industri Nasional</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 d-block d-md-none text-center mt-3">
+                <a href="#" class="btn btn-outline-danger w-100">Lihat Semua Berita</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
