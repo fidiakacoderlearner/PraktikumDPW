@@ -1,0 +1,222 @@
+/* Variabel dan reset */
+:root {
+    --primary-red: #7a1c1c;
+    --hover-red: #cb0202;
+    --light-red: #b22222;
+    --bg-gray: #f4f4f4;
+    --border-color: #d3a4a4;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-gray);
+}
+
+/* Global layout */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-red);
+    padding: 25px 20px;
+    color: var(--white);
+}
+
+.sidebar h2 { margin-bottom: 25px; }
+.sidebar ul { list-style: none; }
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: var(--white);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sidebar a:hover, 
+.sidebar .active {
+    background-color: var(--hover-red);
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+header h1 {
+    color: #8b0000;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 20px;
+}
+
+hr {
+    height: 4px;
+    background-color: var(--light-red);
+    border: none;
+    margin-bottom: 30px;
+}
+
+/* styles khusus halaman create */
+.create-page form {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 1200px; 
+    box-shadow: 0 4px 10px rgba(178, 34, 34, 0.2);
+}
+
+.create-page form div {
+    margin-bottom: 15px;
+}
+
+.create-page label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--primary-red);
+}
+
+.create-page input[type="text"],
+.create-page input[type="date"],
+.create-page input[type="file"],
+.create-page textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.create-page textarea {
+    resize: none;
+    min-height: 80px;
+}
+
+.create-page input:focus,
+.create-page textarea:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 5px rgba(178, 34, 34, 0.3);
+}
+
+.create-page input[type="submit"] {
+    background-color: var(--light-red);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.create-page input[type="submit"]:hover {
+    background-color: var(--hover-red);
+    cursor: pointer;
+}
+
+.create-page .error-text {
+    color: var(--hover-red);
+    font-size: 12px;
+    margin-top: 4px;
+    display: block; 
+}   
+
+.create-page .input-error {
+    border-color: var(--hover-red) !important;
+}
+
+.create-page input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+    font-size: 14px; 
+}
+
+/* styles khusus halaman read */
+
+.read-page .search-container {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.read-page .search-container input[type="text"] {
+    padding: 8px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.read-page .search-container input[type="text"]:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 5px rgba(178, 34, 34, 0.3);
+}
+
+.read-page .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.read-page .styled-table thead tr {
+    background-color: #d60d0d; 
+    color: var(--white);
+}
+
+.read-page .styled-table td,
+.read-page .styled-table th {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+}
+
+.read-page .styled-table tbody td:first-child {
+    text-align: center;
+}
+
+.read-page .action-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.read-page .btn-edit,
+.read-page .btn-delete { 
+    border: none;
+    border-radius: 5px; 
+    color: var(--white);
+    padding: 3px 10px; 
+}
+
+.read-page .btn-edit { 
+    background-color: #3498db;
+}
+
+.read-page .btn-delete { 
+    background-color: #e74c3c; 
+    
+}
+
+.read-page h3 {
+    color: var(--primary-red);
+    margin-bottom: 20px;
+    text-align: center;
+}
