@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-desain FT UNRI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --unri-red: #cc0000;
+            --unri-dark: #a30000;
+        }
+        
+        body { 
+            background-color: #f8f9fa; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- STYLING LOGO --- */
+        .logo-header {
+            max-height: 40px; 
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-footer {
+            max-height: 65px; 
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        /* --- STYLING NAVBAR & DROPDOWN --- */
+        .navbar-unri {
+            background-color: var(--unri-red);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-unri .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .navbar-unri .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: 0.3s;
+            padding: 15px 10px !important; 
+        }
+        .navbar-unri .nav-link:hover {
+            color: #fff !important;
+        }
+        .dropdown-toggle::after { display: none !important; }
+        .nav-link .bi-chevron-down {
+            transition: transform 0.3s ease;
+            display: inline-block;
+            font-size: 0.75rem;
+            margin-left: 3px;
+        }
+        .nav-link[aria-expanded="true"] .bi-chevron-down { transform: rotate(180deg); }
+        .dropdown-menu {
+            border: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 10px 0;
+            margin-top: 0 !important;
+            border-top: 3px solid var(--unri-dark);
+            max-height: 80vh; 
+            overflow-y: auto; 
+        }
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            color: #444;
+            border-bottom: 1px solid #f1f1f1;
+            transition: 0.2s;
+        }
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: var(--unri-red);
+            padding-left: 25px; 
+        }
+        @media (min-width: 992px) {
+            .navbar-expand-lg .nav-item.dropdown:hover .dropdown-menu { display: block; }
+            .navbar-expand-lg .nav-item.dropdown:hover .bi-chevron-down { transform: rotate(180deg); }
+        }
+
+        /* --- STYLING HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            height: 60vh; 
+            min-height: 500px;
+            background: url('https://i.ytimg.com/vi/GqMWWsQhznU/maxresdefault.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            background-attachment: fixed;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(1.5px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-hero {
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-section { height: 60vh; }
+        }
+
+        /* --- STYLING BERITA --- */
+        .card {
+            transition: 0.3s ease;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .news-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .news-img {
+            width: 100%;
+            object-fit: cover;
+        }
+        .img-featured { aspect-ratio: 16/9; }
+        .img-small { aspect-ratio: 4/3; }
+        
+        .badge-inline {
+            background-color: #df2c3b; 
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+            width: max-content;
+        }
+
+        .news-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== DEAN CARD ONLY ===== */
+        .dean-card {
+            border-radius: 14px;
+            overflow: hidden; 
+        }
+
+        .dean-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dean-card:hover {
+            transform: none !important;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+        }
+
+        /* --- STYLING AGENDA RENCANA --- */
+        .title-underline {
+            width: 250px;
+            height: 4px;
+            background-color: var(--unri-red);
+            border-radius: 2px;
+            margin-top: 8px;
+        }
+        .agenda-card {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .agenda-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .agenda-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .agenda-info {
+            border-top: 1px dashed #dee2e6;
+            padding-top: 15px;
+        }
+        .agenda-full-date {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--unri-red);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .agenda-location {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* --- STYLING MITRA --- */
+        .mitra-section {
+            padding: 60px 0;
+            background-color: #fff;
+            margin-top: 50px;
+        }
+        .swiper {
+            width: 100%;
+            padding: 40px 0 60px 0;
+            overflow: hidden; 
+        }
+        .swiper-slide {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 250px; 
+            height: 120px;
+            transition: all 0.3s ease;
+        }
+        .swiper-slide-active {
+            box-shadow: 0 15px 35px rgba(204, 0, 0, 0.2);
+            border: 2px solid var(--unri-red);
+            transform: scale(1.1); 
+            z-index: 10;
+        }
+        .mitra-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        @media (max-width: 768px) {
+            .swiper-slide { width: 200px; height: 100px; }
+        }
+
+        /* --- STYLING FOOTER --- */
+        .footer-unri {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 60px 0 20px 0;
+            margin-top: auto; 
+        }
+        .footer-unri h6 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .footer-unri ul { list-style: none; padding-left: 0; }
+        .footer-unri ul li { margin-bottom: 12px; }
+        .footer-unri a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        .footer-unri a:hover { color: var(--unri-red); }
+        .social-icons a { font-size: 1.2rem; margin-right: 15px; color: #ffffff; }
+        .social-icons a:hover { color: var(--unri-red); }
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 25px;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #888888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-unri sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">
+                <img src="logo.png" alt="Logo FT UNRI" class="logo-header">
+            </a>
+            <button class="navbar-toggler border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profil <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
+                            <li><a class="dropdown-item" href="#">Sejarah</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                            <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
+                            <li><a class="dropdown-item" href="#">Tujuan</a></li>
+                            <li><a class="dropdown-item" href="#">Pimpinan</a></li>
+                            <li><a class="dropdown-item" href="#">Sambutan Dekan</a></li>
+                            <li><a class="dropdown-item" href="#">Akreditasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAkademik" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Akademik <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownAkademik">
+                            <li><a class="dropdown-item" href="#">Kalender Akademik</a></li>
+                            <li><a class="dropdown-item" href="#">Peraturan Terkait</a></li>
+                            <li><a class="dropdown-item" href="#">Pedoman Akademik</a></li>
+                            <li><a class="dropdown-item" href="#">SOP Akademik</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Mesin</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Elektro</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Arsitektur</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Sipil</a></li>
+                            <li><a class="dropdown-item" href="#">Jurusan Teknik Kimia</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">SDM</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPPID" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            PPID <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPPID">
+                            <li><a class="dropdown-item" href="#">Profil Singkat</a></li>
+                            <li><a class="dropdown-item" href="#">Gambaran Umum</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                            <li><a class="dropdown-item" href="#">Surat Keputusan</a></li>
+                            <li><a class="dropdown-item" href="#">Tugas dan Tanggung Jawab</a></li>
+                            <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
+                            <li><a class="dropdown-item" href="#">SOP PPID</a></li>
+                            <li><a class="dropdown-item" href="#">Layanan Terkait</a></li>
+                            <li><a class="dropdown-item" href="#">Layanan Informasi</a></li>
+                            <li><a class="dropdown-item" href="#">Informasi Wajib Berkala</a></li>
+                            <li><a class="dropdown-item" href="#">Informasi Tersedia Setiap Saat</a></li>
+                            <li><a class="dropdown-item" href="#">Daftar Informasi Publik Online</a></li>
+                            <li><a class="dropdown-item" href="#">Formulir Permohonan dan Keberatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">K3L</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">SPM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kerjasama</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animate__animated animate__fadeInUp">Building the Future with Engineering Excellence</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                    Selamat Datang di Fakultas Teknik Universitas Riau. Wadah inovasi, riset, dan pengembangan teknologi unggul untuk kemajuan bangsa.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#kabar" class="btn btn-danger btn-hero">Eksplorasi Berita</a>
+                    <a href="#" class="btn btn-outline-light btn-hero">Profil Fakultas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-5">
+        <div class="container">
+            <div class="card dean-card border-0 shadow-sm">
+            <div class="row g-0 align-items-stretch">
+                <div class="col-md-4">
+                <img src="https://is3.cloudhost.id/cms-unri/ft.unri.ac.id/media/14577/hVpH6wgdDcUu4j0JbmJT0FStLy1EhY04eOrri0jq.jpg"
+                    class="dean-img"
+                    alt="Dekan FT UNRI">
+                </div>
+                <div class="col-md-8 p-4">
+                    <h5 class="fw-bold mb-1 mt-3">
+                    Prof. Ahmad Fadli, STM, Ph.D.
+                </h5>
+                <small class="text-muted mb-3">
+                    Dekan Fakultas Teknik Universitas Riau
+                </small>
+                </h4>
+                <p class="fs-4 text-muted fst-italic mt-5">
+                    "Kami di Fakultas Teknik Universitas Riau tidak hanya berfokus pada penguasaan ilmu pengetahuan dan teknologi, 
+                    tetapi juga pada penguatan nilai-nilai kepemimpinan, etika profesional, dan semangat inovasi. Mahasiswa kami 
+                    dibina untuk menjadi lulusan yang adaptif, kolaboratif, dan berdaya saing tinggi dalam menghadapi era transformasi 
+                    digital dan revolusi industri. Kami percaya bahwa Fakultas Teknik UNRI adalah tempat terbaik bagi Anda untuk 
+                    mengembangkan potensi dan membangun masa depan. Terima kasih atas kepercayaan Anda kepada kami."
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="kabar" class="container pt-3"></div>
+
+    <div class="container mt-5 pt-3">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <h2 class="fw-bold mb-0" style="color: var(--unri-red);">Berita</h2>
+                <p class="text-muted mb-0 mt-1">Informasi dan berita terbaru seputar Fakultas Teknik</p>
+            </div>
+            <a href="#" class="btn btn-outline-danger btn-sm d-none d-md-block">Lihat Semua Berita</a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="news-card position-relative" style="cursor: pointer;">
+                    <img src="https://picsum.photos/id/180/800/450" class="news-img img-featured" alt="Berita Utama">
+                    <div class="news-content">
+                        <span class="badge-inline">Berita Utama</span>
+                        <small class="text-muted mb-1" style="font-size: 0.95rem;">06 April 2026</small>
+                        
+                        <h3 class="fw-bold mt-2">Sinergi Strategis: FT UNRI & PT KPI Unit II Dumai</h3>
+                        <p class="text-secondary mb-0">Kerjasama berkelanjutan untuk meningkatkan kualitas SDM dan inovasi teknologi di lingkungan kampus guna menghadapi tantangan industri masa depan...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row g-4 h-100">
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/20/400/300" class="news-img img-small" alt="Berita 1">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">BERITA</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">12 Februari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">Peringatan Bulan K3 Nasional FT UNRI Berjalan Lancar</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/48/400/300" class="news-img img-small" alt="Berita 2">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">BERITA</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">04 Februari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">MoA STT Nusantara Mandiri Duri dan FT Universitas Riau</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/60/400/300" class="news-img img-small" alt="Berita 3">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">AKADEMIK</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">31 Januari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">Rapat Kerja Fakultas Teknik Tahun Penganggaran 2027</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <div class="news-card position-relative" style="cursor: pointer;">
+                            <img src="https://picsum.photos/id/119/400/300" class="news-img img-small" alt="Berita 4">
+                            <div class="news-content p-3">
+                                <span class="badge-inline" style="font-size: 0.7rem; padding: 2px 8px; margin-bottom: 6px;">INFO</span>
+                                <small class="text-muted" style="font-size: 0.8rem;">25 Januari 2026</small>
+                                <h6 class="fw-bold mt-1 mb-0" style="font-size: 0.95rem;">Sharing Session Bersama Alumni Industri Nasional</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 d-block d-md-none text-center mt-3">
+                <a href="#" class="btn btn-outline-danger w-100">Lihat Semua Berita</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <h2 class="fw-bold mb-0">Rencana Agenda</h2>
+                <div class="title-underline"></div>
+            </div>
+            <a href="#" class="btn btn-outline-secondary btn-sm d-none d-md-block">Selengkapnya</a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="agenda-card">
+                    <h5 class="agenda-title">Persiapan Karier: Bekal Menuju Dunia Profesional Teknik Informatika</h5>
+                    <div class="agenda-info">
+                        <p class="agenda-full-date"><i class="bi bi-calendar-event"></i> 10 April 2026</p>
+                        <p class="agenda-location"><i class="bi bi-geo-alt-fill text-secondary"></i> Online dan Ruang Sidang Dekanat FT</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="agenda-card">
+                    <h5 class="agenda-title">Seminar Teknologi "Sistem Informasi & Smart City Simulation"</h5>
+                    <div class="agenda-info">
+                        <p class="agenda-full-date"><i class="bi bi-calendar-event"></i> 15 April 2026</p>
+                        <p class="agenda-location"><i class="bi bi-geo-alt-fill text-secondary"></i> Aula Gedung C FT UNRI</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="agenda-card">
+                    <h5 class="agenda-title">Studium Generale Mahasiswa Fakultas Teknik UNRI 2026</h5>
+                    <div class="agenda-info">
+                        <p class="agenda-full-date"><i class="bi bi-calendar-event"></i> 21 April 2026</p>
+                        <p class="agenda-location"><i class="bi bi-geo-alt-fill text-secondary"></i> Gedung Serbaguna UNRI</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-12 d-block d-md-none text-center mt-4">
+            <a href="#" class="btn btn-outline-secondary w-100">Selengkapnya</a>
+        </div>
+    </div>
+
+    <div class="mitra-section">
+        <div class="container">
+            <div class="text-center mb-2">
+                <h3 class="fw-bold" style="color: var(--unri-red);">Mitra Kerjasama</h3>
+                <p class="text-muted">Instansi dan perusahaan yang bekerja sama dengan kami (Geser untuk melihat)</p>
+            </div>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://i.postimg.cc/PqyHS4Z5/Logo-of-North-Sumatra-University-svg.png" class="mitra-logo" alt="USU"></div>
+                    <div class="swiper-slide"><img src="https://i.postimg.cc/Bvp3mgDv/Logo-Telkom-University-potrait.png" class="mitra-logo" alt="Telkom"></div>
+                    <div class="swiper-slide"><img src="https://i.postimg.cc/s2mzTcSy/Logo-PLN.png" class="mitra-logo" alt="PLN"></div>
+                    <div class="swiper-slide"><img src="https://i.postimg.cc/g0mdy5wd/APRIL-Logo.jpg" class="mitra-logo" alt="APRIL"></div>
+                    <div class="swiper-slide"><img src="https://i.postimg.cc/jjcTMXNw/Pertamina-Logo-svg.png" class="mitra-logo" alt="Pertamina"></div>
+                    <div class="swiper-slide"><img src="https://i.postimg.cc/rpjTfJWT/Daehan-E-C-logo.png" class="mitra-logo" alt="DAEHAN E-C"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-unri">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-12 pe-lg-5">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="logo.png" alt="Logo FT UNRI" class="logo-header">
+                    </div>
+                    <p class="mb-4 text-light">Fakultas Teknik Universitas Riau</p>
+                    <div class="social-icons mb-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                    </div>
+                    <p class="text-secondary" style="font-size: 0.9rem; line-height: 1.6;">
+                        Alamat: Fakultas Teknik, Kampus Binawidya, Jl. HR Soebrantas KM. 12.5, Simpang Baru, Tampan
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h6>Direktori Web</h6>
+                    <ul>
+                        <li><a href="#">UNRI</a></li>
+                        <li><a href="#">Perpustakaan</a></li>
+                        <li><a href="#">LPPM</a></li>
+                        <li><a href="#">LPPMP</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h6>Layanan Online</h6>
+                    <ul>
+                        <li><a href="#">Satu Unri</a></li>
+                        <li><a href="#">E-Jurnal</a></li>
+                        <li><a href="#">Selasi</a></li>
+                        <li><a href="#">E-PPM</a></li>
+                        <li><a href="#">Insentif PPM</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6>Say hello</h6>
+                    <div class="mb-4">
+                        <span class="d-block text-secondary mb-1" style="font-size: 0.9rem;">Need support?</span>
+                        <a href="#" class="text-decoration-underline">helpdesk.unri.ac.id</a>
+                    </div>
+                    <div>
+                        <span class="d-block text-secondary mb-1" style="font-size: 0.9rem;">Customer care</span>
+                        <span class="text-light">(0761) 63266</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0">This site is protected by reCAPTCHA and the Google 
+                    <a href="#" class="text-decoration-underline text-secondary">privacy policy</a> and 
+                    <a href="#" class="text-decoration-underline text-secondary">terms of service</a> apply. 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true, 
+            centeredSlides: true,
+            slidesPerView: "auto", 
+            loop: false, 
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+        });
+    </script>
+</body>
+</html>
